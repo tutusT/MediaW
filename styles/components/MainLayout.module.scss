@@ -1,0 +1,28 @@
+.site-wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+.left-block,
+.site-content,
+.right-block {
+  overflow-y: auto;
+}
+
+.left-block {
+  width: 280px;
+  flex-shrink: 0;
+  border: 1px solid #efedf6;
+}
+
+.site-content {
+  flex-grow: 1;
+  background: #e5e5e5;
+  padding: 60px 95px 30px;
+}
+
+.right-block {
+  width: 376px;
+  flex-shrink: 0;
+  border: 1px solid #eceaf2;
+}
