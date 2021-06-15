@@ -1,13 +1,6 @@
-import Head from 'next/head'
 import { wrapper } from '../redux/store'
 import '../styles/global.scss'
 
-const App = ({ Component, pageProps }) => (
-  <>
-    <Head>
-    </Head>
-    <Component {...pageProps} />
-  </>
-)
+const App = ({ Component, pageProps }) => <Component {...pageProps} />
 
 export default wrapper.withRedux(App)
