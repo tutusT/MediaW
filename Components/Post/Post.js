@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Button from '../UI/Button'
 import Comments from '../Comments'
 import { useDispatch } from 'react-redux'
