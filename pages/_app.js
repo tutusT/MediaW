@@ -5,7 +5,6 @@ import '../styles/global.scss'
 const App = ({ Component, pageProps }) => (
   <>
     <Head>
-      <title>Тестовое задание</title>
     </Head>
     <Component {...pageProps} />
   </>
