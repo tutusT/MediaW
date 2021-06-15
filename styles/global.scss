@@ -11,6 +11,10 @@
   font-family: $w_b;
   font-size: 16px;
   cursor: pointer;
+  &[disabled] {
+    color: #c1bfbe;
+    cursor: auto;
+  }
 }
 
 .item {
@@ -29,9 +33,8 @@
 }
 
 .menu {
-  padding-top: 52px;
   &__list {
-    padding: 0;
+    padding: 52px 0 0 0;
     margin: 0;
   }
   &__link {
@@ -152,4 +155,25 @@
 ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+}
+
+.entering {
+  transition: all 0.5s;
+  transform: translateX(0);
+  opacity: 1;
+}
+.entered {
+  transition: all 0.5s;
+  transform: translateX(0);
+  opacity: 1;
+}
+.exiting {
+  transition: all 0.5s;
+  transform: translateX(-100%);
+  opacity: 0;
+}
+.exited {
+  transition: all 0.5s;
+  transform: translateX(-100%);
+  opacity: 0;
 }
