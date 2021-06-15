@@ -4,11 +4,14 @@ import { userFetch } from '../../redux/actions/users'
 import classes from '../../styles/components/MainLayout.module.scss'
 import NavBar from '../UI/NavBar'
 import UserInfo from '../UserInfo'
+import Spinner from '../Spinner'
 
 const Main = ({ userId, children, title }) => {
   const user = useSelector(({ users }) => users.selectedUser)
 
   const dispatch = useDispatch()
+
+  const app = useSelector(({ app }) => app.loading)
 
   useEffect(() => {
     if (!userId) return
@@ -22,8 +25,14 @@ const Main = ({ userId, children, title }) => {
         <NavBar />
       </aside>
       <main className={classes['site-content']}>
-        <h1 className="title">{title}</h1>
-        {children}
+        {app ? (
+          <Spinner />
+        ) : (
+          <>
+            <h1 className="title">{title}</h1>
+            {children}
+          </>
+        )}
       </main>
       {user.length ? (
         <aside className={classes['right-block']}>
