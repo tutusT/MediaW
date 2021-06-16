@@ -22,11 +22,11 @@ export default class {
 
     const result = []
     let i = 0
-    while (i !== 20) {
+    while (i !== 21) {
       result.push(posts[i])
       i++
     }
-    return result
+    return result.reverse()
   }
 
   getAllUsers = async () => await this.getResource('users')
