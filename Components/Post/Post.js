@@ -16,6 +16,8 @@ const Post = ({ id, title, body }) => {
     return comments.comments.filter(({ postId }) => postId === id)
   })
 
+  const dispatch = useDispatch()
+
   const showCommentHandler = () => {
     if (showComment) {
       setDisabledBtn(false)
@@ -31,8 +33,6 @@ const Post = ({ id, title, body }) => {
     setDisabledBtn(false)
     setBtnText('Скрыть комментарии')
   }
-
-  const dispatch = useDispatch()
 
   useEffect(() => {
     if (showComment) {
