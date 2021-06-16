@@ -16,7 +16,18 @@ export default class {
     }
   }
 
-  getAllPosts = async () => await this.getResource('posts')
+  getAllPosts = async () => {
+    let posts = await this.getResource('posts')
+    posts = posts.reverse()
+
+    const result = []
+    let i = 0
+    while (i !== 20) {
+      result.push(posts[i])
+      i++
+    }
+    return result
+  }
 
   getAllUsers = async () => await this.getResource('users')
 
