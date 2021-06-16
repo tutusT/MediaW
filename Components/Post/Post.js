@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 import Button from '../UI/Button'
 import Comments from '../Comments'
-import { useDispatch } from 'react-redux'
 import { commentsFetch } from '../../redux/actions/comments'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Transition } from 'react-transition-group'
 
 const Post = ({ id, title, body }) => {
