@@ -1,6 +1,10 @@
 import Service from '../../service'
 
-import { FETCH_POSTS_SUCCESS, FETCH_POSTS_BY_USER_SUCCESS } from '../types'
+import {
+  FETCH_POSTS_SUCCESS,
+  FETCH_POSTS_BY_USER_SUCCESS,
+  FETCH_FAILURE,
+} from '../types'
 
 const { getAllPosts, getPostsByUser } = new Service()
 
@@ -12,8 +16,13 @@ const fetchPostsSuccess = payload => {
 }
 
 const fetchPosts = () => async dispatch => {
-  const posts = await getAllPosts()
-  dispatch(fetchPostsSuccess(posts))
+  try {
+    const posts = await getAllPosts()
+
+    dispatch(fetchPostsSuccess(posts))
+  } catch (error) {
+    dispatch({ type: FETCH_FAILURE })
+  }
 }
 
 const fetchPostsByUserSuccess = payload => {
@@ -24,8 +33,12 @@ const fetchPostsByUserSuccess = payload => {
 }
 
 const fetchPostsByUser = id => async dispatch => {
-  const posts = await getPostsByUser(id)
-  dispatch(fetchPostsByUserSuccess(posts))
+  try {
+    const posts = await getPostsByUser(id)
+    dispatch(fetchPostsByUserSuccess(posts))
+  } catch (error) {
+    dispatch({ type: FETCH_FAILURE })
+  }
 }
 
 export { fetchPostsByUser, fetchPosts }

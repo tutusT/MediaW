@@ -19,7 +19,7 @@ const Users = () => {
       <Head>
         <title>Пользователи</title>
       </Head>
-      <Main userId={users[0].id} title="Пользователи">
+      <Main userId={users[0]?.id} title="Пользователи">
         <div className="users-items">{renderUsers(users)}</div>
       </Main>
     </>

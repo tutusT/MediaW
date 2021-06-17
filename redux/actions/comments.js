@@ -12,8 +12,12 @@ const commentsFetchSuccess = payload => {
 }
 
 const commentsFetch = id => async dispatch => {
-  const comments = await getComments(id)
-  dispatch(commentsFetchSuccess(comments))
+  try {
+    const comments = await getComments(id)
+    dispatch(commentsFetchSuccess(comments))
+  } catch (error) {
+    dispatch({ type: FETCH_FAILURE })
+  }
 }
 
 export { commentsFetch }

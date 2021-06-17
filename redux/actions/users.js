@@ -4,6 +4,7 @@ import {
   FETCH_USERS_SUCCESS,
   FETCH_SELECTED_USER_ID_SUCCESS,
   FETCH_SELECTED_USER,
+  FETCH_FAILURE,
 } from '../types'
 
 const { getAllUsers, getUser } = new Service()
@@ -32,14 +33,21 @@ const fetchUserSuccess = payload => {
 const fetchUser = id => async dispatch => {
   dispatch(fetchSelectedUserIdSuccess(id))
 
-  const user = await getUser(id)
-
-  dispatch(fetchUserSuccess(user))
+  try {
+    const user = await getUser(id)
+    dispatch(fetchUserSuccess(user))
+  } catch (error) {
+    dispatch({ type: FETCH_FAILURE })
+  }
 }
 
 const fetchUsers = () => async dispatch => {
-  const users = await getAllUsers()
-  dispatch(fetchUsersSuccess(users))
+  try {
+    const users = await getAllUsers()
+    dispatch(fetchUsersSuccess(users))
+  } catch (error) {
+    dispatch({ type: FETCH_FAILURE })
+  }
 }
 
 export { fetchUser, fetchUsers }
