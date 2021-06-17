@@ -55,11 +55,7 @@ const Post = ({ id, title, body }) => {
         {btnText}
       </Button>
       <Transition in={showComment} timeout={500} mountOnEnter unmountOnExit>
-        {state => (
-          <div className={`comments-wrapper ${state}`}>
-            <Comments comments={comments} />
-          </div>
-        )}
+        {state => <Comments comments={comments} state={state} />}
       </Transition>
     </div>
   )
