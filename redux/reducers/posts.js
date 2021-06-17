@@ -1,21 +1,21 @@
-import { FETCH_POSTS, FETCH_POSTS_USER } from '../types'
+import { FETCH_POSTS_SUCCESS, FETCH_POSTS_BY_USER_SUCCESS } from '../types'
 
 const initialState = {
   posts: [],
-  postsUser: [],
+  postsByUser: [],
 }
 
 export const posts = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_POSTS:
+    case FETCH_POSTS_SUCCESS:
       return {
         ...state,
         posts: action.payload,
       }
-    case FETCH_POSTS_USER:
+    case FETCH_POSTS_BY_USER_SUCCESS:
       return {
         ...state,
-        postsUser: action.payload,
+        postsByUser: action.payload,
       }
     default:
       return state

@@ -1,4 +1,8 @@
-import { FETCH_USER, FETCH_USERS, FETCH_USER_ID } from '../types'
+import {
+  FETCH_USERS_SUCCESS,
+  FETCH_SELECTED_USER_ID_SUCCESS,
+  FETCH_SELECTED_USER,
+} from '../types'
 
 const initialState = {
   users: [],
@@ -8,17 +12,17 @@ const initialState = {
 
 export const users = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_USERS:
+    case FETCH_USERS_SUCCESS:
       return {
         ...state,
         users: action.payload,
       }
-    case FETCH_USER_ID:
+    case FETCH_SELECTED_USER_ID_SUCCESS:
       return {
         ...state,
         selectedUserId: action.payload,
       }
-    case FETCH_USER:
+    case FETCH_SELECTED_USER:
       return {
         ...state,
         selectedUser: action.payload,

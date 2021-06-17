@@ -1,12 +1,12 @@
 import Service from '../../service'
 
-import { FETCH_COMMENTS } from '../types'
+import { FETCH_COMMENTS_SUCCESS } from '../types'
 
 const { getComments } = new Service()
 
 const commentsFetchSuccess = payload => {
   return {
-    type: FETCH_COMMENTS,
+    type: FETCH_COMMENTS_SUCCESS,
     payload,
   }
 }

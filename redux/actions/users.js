@@ -1,41 +1,45 @@
 import Service from '../../service'
 
-import { FETCH_USER, FETCH_USERS, FETCH_USER_ID } from '../types'
+import {
+  FETCH_USERS_SUCCESS,
+  FETCH_SELECTED_USER_ID_SUCCESS,
+  FETCH_SELECTED_USER,
+} from '../types'
 
 const { getAllUsers, getUser } = new Service()
 
-const usersFetchSuccess = payload => {
+const fetchUsersSuccess = payload => {
   return {
-    type: FETCH_USERS,
+    type: FETCH_USERS_SUCCESS,
     payload,
   }
 }
 
-const userIdFetch = payload => {
+const fetchSelectedUserIdSuccess = payload => {
   return {
-    type: FETCH_USER_ID,
+    type: FETCH_SELECTED_USER_ID_SUCCESS,
     payload,
   }
 }
 
-const userFetchSuccess = payload => {
+const fetchUserSuccess = payload => {
   return {
-    type: FETCH_USER,
+    type: FETCH_SELECTED_USER,
     payload,
   }
 }
 
-const userFetch = id => async dispatch => {
-  dispatch(userIdFetch(id))
+const fetchUser = id => async dispatch => {
+  dispatch(fetchSelectedUserIdSuccess(id))
 
   const user = await getUser(id)
 
-  dispatch(userFetchSuccess(user))
+  dispatch(fetchUserSuccess(user))
 }
 
-const usersFetch = () => async dispatch => {
+const fetchUsers = () => async dispatch => {
   const users = await getAllUsers()
-  dispatch(usersFetchSuccess(users))
+  dispatch(fetchUsersSuccess(users))
 }
 
-export { usersFetch, userFetch }
+export { fetchUser, fetchUsers }

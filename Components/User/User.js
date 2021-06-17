@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
-import { userFetch } from '../../redux/actions/users'
+import { fetchUser } from '../../redux/actions/users'
 import Button from '../UI/Button'
 
 const User = ({ id, name, address: { city } }) => {
@@ -9,7 +9,7 @@ const User = ({ id, name, address: { city } }) => {
   const dispatch = useDispatch()
 
   const getUser = id => {
-    dispatch(userFetch(id))
+    dispatch(fetchUser(id))
   }
 
   const showPost = () => {

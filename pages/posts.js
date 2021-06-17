@@ -1,15 +1,15 @@
 import Head from 'next/head'
 import { useSelector } from 'react-redux'
 import { wrapper } from '../redux/store'
-import { postsFetch } from '../redux/actions/posts'
+import { fetchPosts } from '../redux/actions/posts'
 import Main from '../Components/Layouts/Main'
 import Post from '../Components/Post'
 
-const Posts = ({ title, postsUser, userId }) => {
+const Posts = ({ title, postsByUser, userId }) => {
   let posts = useSelector(({ posts }) => posts.posts)
 
-  if (postsUser) {
-    posts = postsUser
+  if (postsByUser) {
+    posts = postsByUser
   }
 
   const renderPosts = posts => {
@@ -31,7 +31,7 @@ const Posts = ({ title, postsUser, userId }) => {
 }
 
 export const getStaticProps = wrapper.getStaticProps(store => async () => {
-  await store.dispatch(postsFetch())
+  await store.dispatch(fetchPosts())
 })
 
 export default Posts

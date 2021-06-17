@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useSelector } from 'react-redux'
 import { wrapper } from '../redux/store'
-import { usersFetch } from '../redux/actions/users'
+import { fetchUsers } from '../redux/actions/users'
 import Main from '../Components/Layouts/Main'
 import User from '../Components/User'
 
@@ -27,7 +27,7 @@ const Users = () => {
 }
 
 export const getStaticProps = wrapper.getStaticProps(store => async () => {
-  await store.dispatch(usersFetch())
+  await store.dispatch(fetchUsers())
 })
 
 export default Users

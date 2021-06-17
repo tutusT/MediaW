@@ -1,31 +1,31 @@
 import Service from '../../service'
 
-import { FETCH_POSTS, FETCH_POSTS_USER } from '../types'
+import { FETCH_POSTS_SUCCESS, FETCH_POSTS_BY_USER_SUCCESS } from '../types'
 
-const { getAllPosts, getPostsUser } = new Service()
+const { getAllPosts, getPostsByUser } = new Service()
 
-const postsFetchSuccess = payload => {
+const fetchPostsSuccess = payload => {
   return {
-    type: FETCH_POSTS,
+    type: FETCH_POSTS_SUCCESS,
     payload,
   }
 }
 
-const postsFetch = () => async dispatch => {
+const fetchPosts = () => async dispatch => {
   const posts = await getAllPosts()
-  dispatch(postsFetchSuccess(posts))
+  dispatch(fetchPostsSuccess(posts))
 }
 
-const postsUserFetchSuccess = payload => {
+const fetchPostsByUserSuccess = payload => {
   return {
-    type: FETCH_POSTS_USER,
+    type: FETCH_POSTS_BY_USER_SUCCESS,
     payload,
   }
 }
 
-const postsUserFetch = id => async dispatch => {
-  const posts = await getPostsUser(id)
-  dispatch(postsUserFetchSuccess(posts))
+const fetchPostsByUser = id => async dispatch => {
+  const posts = await getPostsByUser(id)
+  dispatch(fetchPostsByUserSuccess(posts))
 }
 
-export { postsUserFetch, postsFetch }
+export { fetchPostsByUser, fetchPosts }

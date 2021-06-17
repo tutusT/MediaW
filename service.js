@@ -31,7 +31,7 @@ export default class {
 
   getAllUsers = async () => await this.getResource('users')
 
-  getPostsUser = async id => await this.getResource(`posts?userId=${id}`)
+  getPostsByUser = async id => await this.getResource(`posts?userId=${id}`)
 
   getUser = async id => await this.getResource(`users?id=${id}`)
 
