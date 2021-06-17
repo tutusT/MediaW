@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { HIDE_ERROR } from '../../redux/types'
 import classes from '../../styles/components/ErrorIndicator.module.scss'
+
 const ErrorIndicator = ({ errorMessage }) => {
   const dispatch = useDispatch()
 
